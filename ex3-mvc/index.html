@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="app">
+  <head>
+    <title>Using AngularJS MVC Pattern</title>
+    <!--
+    $scope is the scope object that types the controller object to the view
+    the View can know about the controller, but the controller doesn't know
+    anything about the view.
+
+    Knockout or other data-binding frameworks call the scope the "view-model"
+    -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script
+      data-require="angular.js@1.4.5"
+      data-semver="1.4.5"
+      src="../scripts/angular.min.js">
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+  </head>
+  <body>
+    <div ng-controller="SimpleController">
+      Filter: <input type="text" data-ng-model="personFilter"/>
+      </br />
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>
+            Index
+          </th>
+          <th>
+            Name
+          </th>
+          <th>
+            City
+          </th>
+          <th>
+            Date Joined
+          </th>
+          <th>
+            Ammount Owed
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr data-ng-repeat="person in persons | filter:personFilter | orderBy:'-balance'">
+            <td>
+              {{ $index }}
+            </td>
+            <td>
+              {{ person.name | uppercase }}
+            </td>
+            <td>
+              {{ person.city }}
+            </td>
+            <td>
+              {{ person.joinDate | date: format: 'yyyyMMdd' }}
+            </td>
+            <td>
+              {{ person.balance | currency }}
+            </td>
+          <tr/>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

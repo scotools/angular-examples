@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="demoApp">
+  <head>
+    <title>Using AngularJS MVC Pattern</title>
+    <!--
+    $scope is the scope object that types the controller object to the view
+    the View can know about the controller, but the controller doesn't know
+    anything about the view.
+
+    Knockout or other data-binding frameworks call the scope the "view-model"
+    -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- script
+      data-require="angular.js@1.4.5"
+      data-semver="1.4.5"
+      src="../scripts/angular.min.js">
+    </script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.4.5/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+  </head>
+  <body>
+    <!-- placeholder for the views -->
+    <div data-ng-view></div>
+  </body>
+</html>

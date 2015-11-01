@@ -1,0 +1,58 @@
+<div class="container">
+  <h2>View 1</h2>
+  <a href="#/view2">View 2</a>
+  <hr />
+  Filter: <input type="text" data-ng-model="filter.name"/>
+  </br />
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>
+        Index
+      </th>
+      <th>
+        Name
+      </th>
+      <th>
+        City
+      </th>
+      <th>
+        Date Joined
+      </th>
+      <th>
+        Ammount Owed
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr data-ng-repeat="person in persons | filter:filter.name | orderBy:'-balance'">
+        <td>
+          {{ $index }}
+        </td>
+        <td>
+          {{ person.name | uppercase }}
+        </td>
+        <td>
+          {{ person.city }}
+        </td>
+        <td>
+          {{ person.joinDate | date: format: 'yyyyMMdd' }}
+        </td>
+        <td>
+          {{ person.balance | currency }}
+        </td>
+      <tr/>
+    </tbody>
+  </table>
+  <br />
+  <h2>Add Person</h2>
+  <br />
+  Name:
+  <br />
+  <input type="text" data-ng-model="newPerson.name"/>
+  <br />
+  City:
+  <input type="text" data-ng-model="newPerson.city"/>
+  <br />
+  <button data-ng-click="addPerson()">Add Person</button>
+</div>

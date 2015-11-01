@@ -20,12 +20,12 @@ the simple loading uses "ng-app"
         <!-- create a persons array -->
         var persons = [];
 
-          persons.push({name:'Dave',city:'Pasadena'});
-          persons.push({name:'Tom',city:'Annapolis'});
-          persons.push({name:'Fred',city:'Georgetown'});
-          persons.push({name:'Elliot',city:'Annapolis'});
-          persons.push({name:'Christopher',city:'Annapolis'});
-          persons.push({name:'Ann',city:'Frankfort'});
+          persons.push({name:'Dave',city:'Pasadena',joinDate:'1288323623006',balance:'5.00'});
+          persons.push({name:'Tom',city:'Annapolis',joinDate:'1288323623006',balance:'4.99'});
+          persons.push({name:'Fred',city:'Georgetown',joinDate:'1288323623006',balance:'6.54'});
+          persons.push({name:'Elliot',city:'Annapolis',joinDate:'1288323623006',balance:'3.45'});
+          persons.push({name:'Christopher',city:'Annapolis',joinDate:'1288323623006',balance:'5.23'});
+          persons.push({name:'Ann',city:'Frankfort',joinDate:'1288323623006',balance:'10.23'});
 
         <!-- add persons to the scope -->
         $scope.persons = persons;
@@ -44,8 +44,10 @@ the simple loading uses "ng-app"
         Filter: <input type="text" data-ng-model="nameFilter"/>
         </br />
         <ul>
-          <li data-ng-repeat="person in persons | filter:nameFilter | filter:cityFilter | orderBy:'city' " />
-            {{ person.name }}, {{ person.city }}
+          <li data-ng-repeat="person in persons |
+            filter:nameFilter |
+            orderBy:'city' " />
+            {{ person.name | uppercase }}, {{ person.city }} {{ person.joinDate | date: format: 'yyyyMMdd' }} {{ person.balance | currency }}
           </li>
         </ul>
     </body>
