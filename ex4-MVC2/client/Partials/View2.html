@@ -3,5 +3,8 @@
   <a href="#/view1">View 1</a>
   <ul>
     <li data-ng-repeat="person in persons | orderBy:'city'"/>
+      {{ person.name }} of
+      {{ person.city }}
+    </li>
   </ul>
 </div>

@@ -2,7 +2,7 @@
  * when adding $scope into the controller, the model is accessible once the
  * view declares which controller it is bound to, and thus the injected scope.
  */
-alert("loading");
+//alert("loading");
 var demoApp = angular.module('demoApp',["ngRoute"]);
 
 demoApp.config(function ($routeProvider) {
@@ -19,11 +19,11 @@ demoApp.config(function ($routeProvider) {
       })
     .otherwise({ redirectTo: '/'});
 });
-alert("routes loaded");
+//alert("routes loaded");
 
 //Create factory
 demoApp.factory('simpleFactory', function() {
-  alert("factory created");
+  //alert("factory created");
   var persons = [
     {name:'Dave',city:'Pasadena',joinDate:'1288323623006',balance:5.00},
     {name:'Tom',city:'Annapolis',joinDate:'1288323623006',balance:4.99},
@@ -36,11 +36,11 @@ demoApp.factory('simpleFactory', function() {
   var factory = {};
   //Getter method on the factory
   factory.getPersons = function() {
-    alert("getPersons");
+    //alert("getPersons");
     return persons;
   };
   factory.postPerson = function(person) {
-    alert("postPerson");
+    //alert("postPerson");
     persons.push(person);
   };
   // return the factory
@@ -56,7 +56,7 @@ demoApp.controller('SimpleController', ['$scope', 'simpleFactory', function($sco
   $scope.persons = simpleFactory.getPersons();
   $scope.now = new Date();
   $scope.addPerson = function() {
-    alert("adding person");
+    //alert("adding person");
     simpleFactory.postPerson(
       {name: $scope.newPerson.name,
        city: $scope.newPerson.city,
@@ -68,4 +68,4 @@ demoApp.controller('SimpleController', ['$scope', 'simpleFactory', function($sco
 
 //Add Controllers to the app
 //demoApp.controller(controllers);
-alert("adding controllers SimpleController to demoApp");
+//alert("adding controllers SimpleController to demoApp");
