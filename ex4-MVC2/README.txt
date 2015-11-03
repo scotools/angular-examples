@@ -23,10 +23,10 @@ module      <html np-app="moduleName">
   - Filter
   - Directive
   - data access
-    - factory
-    - service
-    - provider
-    - values
+    - factory - creates an object and returns it
+    - service - function using 'this'
+    - provider - $get function
+    - values - used to get config key/value info
   - controller
 
   To create a module:

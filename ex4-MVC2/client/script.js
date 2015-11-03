@@ -21,28 +21,43 @@ demoApp.config(function ($routeProvider) {
 });
 alert("routes loaded");
 
+//Create factory
+demoApp.factory('simpleFactory', function() {
+  alert("factory created");
+  var persons = [
+    {name:'Dave',city:'Pasadena',joinDate:'1288323623006',balance:5.00},
+    {name:'Tom',city:'Annapolis',joinDate:'1288323623006',balance:4.99},
+    {name:'Fred',city:'Georgetown',joinDate:'1288323623006',balance:6.54},
+    {name:'Elliot',city:'Annapolis',joinDate:'1288323623006',balance:3.45},
+    {name:'Christopher',city:'Annapolis',joinDate:'1288323623006',balance:5.23},
+    {name:'Ann',city:'Frankfort',joinDate:'1288323623006',balance:10.23}
+  ];
+  //Init the factory obj
+  var factory = {};
+  //Getter method on the factory
+  factory.getPersons = function() {
+    alert("getPersons");
+    return persons;
+  };
+  factory.postPerson = function(person) {
+    alert("postPerson");
+    persons.push(person);
+  };
+  // return the factory
+  return factory;
+});
 // object to hold controllers
 //var controllers = {};
 
 // Add the SimpleController
-demoApp.controller('SimpleController', ['$scope', function($scope) {
-
-//controllers.SimpleController = function($scope) {
-  alert("Scope injected");
-  persons = [];
-  persons.push({name:'Dave',city:'Pasadena',joinDate:'1288323623006',balance:5.00});
-  persons.push({name:'Tom',city:'Annapolis',joinDate:'1288323623006',balance:4.99});
-  persons.push({name:'Fred',city:'Georgetown',joinDate:'1288323623006',balance:6.54});
-  persons.push({name:'Elliot',city:'Annapolis',joinDate:'1288323623006',balance:3.45});
-  persons.push({name:'Christopher',city:'Annapolis',joinDate:'1288323623006',balance:5.23});
-  persons.push({name:'Ann',city:'Frankfort',joinDate:'1288323623006',balance:10.23});
-  $scope.persons = persons;
-
+// Controller needs you to specify the dependencies to inject into the
+//function, a.k.a, $scope, simpleFactory
+demoApp.controller('SimpleController', ['$scope', 'simpleFactory', function($scope, simpleFactory) {
+  $scope.persons = simpleFactory.getPersons();
   $scope.now = new Date();
-
   $scope.addPerson = function() {
     alert("adding person");
-    $scope.persons.push(
+    simpleFactory.postPerson(
       {name: $scope.newPerson.name,
        city: $scope.newPerson.city,
        joinDate: $scope.now,
